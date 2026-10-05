@@ -3,34 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c0e12">
+  <meta name="description" content="A little window into GitHub. Find public profiles, explore their numbers, and meet the person behind the username.">
   <title>GitHub Profile Finder</title>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
 <body>
+  <div class="ambient" aria-hidden="true"></div>
+  <a class="skip-link" href="#username">Skip to search</a>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="GitHub Profile Finder home"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span> Profile Finder<span class="brand-dot" aria-hidden="true">.</span></a>
+    <span class="header-note">A little window into GitHub</span>
+  </header>
   <main>
-    <h1>GitHub Profile Finder</h1>
-    <p>Look up a public GitHub profile by username.</p>
+    <div class="intro">
+      <p class="eyebrow"><span aria-hidden="true"></span> PEOPLE BEHIND THE CODE</p>
+      <h1>Behind every handle,<br><span>a person.</span></h1>
+      <p class="intro-copy">One username. A closer look.<br>Explore public GitHub profiles, without the extra tabs.</p>
+    </div>
     <form id="search-form">
       <label for="username">GitHub username</label>
-      <input id="username" name="username" required maxlength="39" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="search-hint">
-      <button type="submit">Find profile</button>
-      <p id="search-hint">Enter a username, not a profile URL. For example: octocat.</p>
+      <div class="search-box">
+        <span class="search-symbol" aria-hidden="true">@</span>
+        <input id="username" name="username" placeholder="Enter a GitHub username" required maxlength="39" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="search-hint">
+        <button type="submit">Find profile</button>
+      </div>
+      <p id="search-hint">Try <span>octocat</span> or your own username. Not a profile URL.</p>
     </form>
     <p id="status" role="status">Search for a profile to get started.</p>
     <p id="error" role="alert" hidden></p>
     <section id="profile" aria-labelledby="profile-name" hidden>
-      <img id="avatar" width="120" height="120" alt="">
-      <h2 id="profile-name"></h2>
-      <p id="profile-login"></p>
+      <div class="profile-topline"><span>THE PROFILE</span><span class="public-label">Public on GitHub</span></div>
+      <div class="identity">
+        <div class="avatar-frame"><span class="avatar-fallback" aria-hidden="true">&lt;/&gt;</span><img id="avatar" width="104" height="104" alt=""></div>
+        <div class="identity-copy"><h2 id="profile-name"></h2><p id="profile-login"></p></div>
+      </div>
       <p id="bio"></p>
-      <dl>
-        <dt>Public repositories</dt><dd id="repositories"></dd>
-        <dt>Followers</dt><dd id="followers"></dd>
-        <dt>Following</dt><dd id="following"></dd>
+      <dl class="stats">
+        <div><dt>Public repositories</dt><dd id="repositories"></dd></div>
+        <div><dt>Followers</dt><dd id="followers"></dd></div>
+        <div><dt>Following</dt><dd id="following"></dd></div>
       </dl>
-      <a id="profile-link" target="_blank" rel="noopener noreferrer">View on GitHub (opens in a new tab)</a>
+      <div class="profile-footer"><span>There’s more to the story.</span><a id="profile-link" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></div>
     </section>
     <noscript>Enable JavaScript to search GitHub profiles.</noscript>
   </main>
+  <footer class="site-footer"><span>Built with curiosity. Powered by the GitHub API.</span><span>Synent · Task 06</span></footer>
 </body>
 </html>
