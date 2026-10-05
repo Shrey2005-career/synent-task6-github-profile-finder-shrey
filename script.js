@@ -49,18 +49,35 @@ form.addEventListener("submit", async (event) => {
   profile.hidden = true;
   error.hidden = true;
   status.textContent = `Loading ${username}'s profile…`;
+  profile.setAttribute("aria-busy", "true");
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
   try {
     const response = await fetch(`https://api.github.com/users/${encodeURIComponent(username)}`, {
       headers: { Accept: "application/vnd.github+json" },
+      signal: controller.signal,
     });
-    if (!response.ok) throw new Error("GitHub could not return this profile. Try again.");
+    if (response.status === 404) throw new Error(`No public profile found for ${username}. Check the username and try again.`);
+    if (response.status === 429 || (response.status === 403 && response.headers.get("x-ratelimit-remaining") === "0")) {
+      throw new Error("GitHub's request limit has been reached. Please wait before trying again.");
+    }
+    if (response.status === 403) throw new Error("GitHub has temporarily restricted this request. Please try again later.");
+    if (!response.ok) throw new Error("GitHub is unable to return a profile right now. Please try again later.");
     renderProfile(await response.json());
     status.textContent = `Profile loaded for ${username}.`;
   } catch (failure) {
     status.textContent = "";
-    error.textContent = failure.message;
+    error.textContent = controller.signal.aborted
+      ? "The request took too long. Please try again."
+      : failure instanceof TypeError
+        ? "Could not connect to GitHub. Check your connection and try again."
+        : failure instanceof SyntaxError
+          ? "GitHub returned an unreadable response. Please try again."
+          : failure.message;
     error.hidden = false;
   } finally {
+    clearTimeout(timeout);
+    profile.setAttribute("aria-busy", "false");
     button.disabled = false;
     button.textContent = "Find profile";
   }
