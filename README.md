@@ -1,6 +1,6 @@
 # GitHub Profile Finder
 
-Synent internship Task 6: a small public API integration built with HTML and vanilla JavaScript. Intentionally unstyled; visual design will be added separately.
+Synent internship Task 6: a lightweight public API integration built with HTML, CSS, and vanilla JavaScript.
 
 ## Run locally
 
@@ -15,6 +15,14 @@ From this folder, run `python -m http.server 4176 --bind 127.0.0.1` and open htt
 - Handle missing profiles, rate limits, restricted requests, server/network failures, and a 15-second timeout.
 - Use fallback text for missing names/bios and safely insert API text with `textContent`.
 - No persistence or credentials; refresh returns to the initial search state.
+- Responsive charcoal-and-blue interface with a compact profile card and square, uncropped avatar.
+- Subtle CSS background drift and profile entrance; both are disabled when the device requests reduced motion.
+
+## Visual design
+
+Clash Display (500/600) is loaded from Fontshare for the main heading; interface text uses system fonts. A local fallback keeps the page usable if the font service is unavailable. No framework, icon package, animation library, or image background is required.
+
+The decorative background is fixed, clipped, and pointer-transparent. Only its transform and opacity animate, so it does not change document layout. Narrow screens stack the search button, profile identity, and statistic tiles. Long profile text can wrap, and keyboard controls have visible focus indicators. The native `hidden` attribute remains authoritative for API states.
 
 ## API and limitations
 
@@ -45,6 +53,8 @@ Verified in the browser: live `octocat` and `Shrey2005-career` lookups, loading 
 4. Search a nonexistent username; confirm old results disappear and an error appears.
 5. Search a valid username again to confirm recovery.
 6. Optionally use DevTools offline/throttling to inspect network errors/loading; restore normal networking afterward.
+7. Check 320, 375, 390, 768, and 1440px widths for horizontal overflow, wrapping, and readable controls. These widths were checked with browser viewport emulation, not physical devices.
+8. Enable your OS/browser reduced-motion preference: the background and profile entrance should remain static. Motion rules are opt-in under `prefers-reduced-motion: no-preference`.
 
 ## Implementation slices
 
@@ -53,3 +63,7 @@ Verified in the browser: live `octocat` and `Shrey2005-career` lookups, loading 
 3. Fetch and profile rendering with loading state.
 4. Error handling and timeout.
 5. Regression tests and documentation.
+6. Charcoal layout, typography, and profile card.
+7. Mobile search controls and stacked profile layout.
+8. Isolated CSS motion with reduced-motion fallback.
+9. Responsive verification and design documentation.
