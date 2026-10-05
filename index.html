@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GitHub Profile Finder</title>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>GitHub Profile Finder</h1>
+    <p>Look up a public GitHub profile by username.</p>
+    <form id="search-form">
+      <label for="username">GitHub username</label>
+      <input id="username" name="username" required maxlength="39" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="search-hint">
+      <button type="submit">Find profile</button>
+      <p id="search-hint">Enter a username, not a profile URL. For example: octocat.</p>
+    </form>
+    <p id="status" role="status">Search for a profile to get started.</p>
+    <p id="error" role="alert" hidden></p>
+    <section id="profile" aria-labelledby="profile-name" hidden>
+      <img id="avatar" width="120" height="120" alt="">
+      <h2 id="profile-name"></h2>
+      <p id="profile-login"></p>
+      <p id="bio"></p>
+      <dl>
+        <dt>Public repositories</dt><dd id="repositories"></dd>
+        <dt>Followers</dt><dd id="followers"></dd>
+        <dt>Following</dt><dd id="following"></dd>
+      </dl>
+      <a id="profile-link" target="_blank" rel="noopener noreferrer">View on GitHub (opens in a new tab)</a>
+    </section>
+    <noscript>Enable JavaScript to search GitHub profiles.</noscript>
+  </main>
+</body>
+</html>
