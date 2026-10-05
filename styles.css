@@ -78,6 +78,21 @@ dd { margin: 0; font-size: 27px; font-weight: 600; letter-spacing: -.6px; font-v
 .site-footer { padding-block: 22px; border-top: 1px solid #252a34; font-size: 11px; line-height: 1.6; }
 noscript { display: block; padding: 16px; color: #ffbdc1; }
 
+/* Animate only the clipped decorative layer, never the page dimensions. */
+@media (prefers-reduced-motion: no-preference) {
+  .ambient::before { animation: ambient-drift 24s ease-in-out infinite alternate; }
+  #profile:not([hidden]) { animation: profile-arrive 240ms ease-out; }
+  button, #profile-link { transition: background-color 160ms ease, color 160ms ease; }
+}
+@keyframes ambient-drift {
+  from { transform: translate3d(-2%, -1%, 0) scale(1.04); opacity: .7; }
+  to { transform: translate3d(2%, 1%, 0) scale(1.08); opacity: 1; }
+}
+@keyframes profile-arrive {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @media (max-width: 600px) {
   .site-header, .site-footer { width: calc(100% - 40px); }
   .site-header { padding-block: 20px; }
