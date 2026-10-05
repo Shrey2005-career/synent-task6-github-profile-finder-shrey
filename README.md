@@ -2,6 +2,14 @@
 
 Synent internship Task 6: a lightweight public API integration built with HTML, CSS, and vanilla JavaScript.
 
+## Video showcase
+
+YouTube demo: coming soon.
+
+<!-- After uploading, replace the line above with:
+[Watch the project demo on YouTube](PASTE_YOUR_YOUTUBE_VIDEO_URL_HERE)
+-->
+
 ## Run locally
 
 From this folder, run `python -m http.server 4176 --bind 127.0.0.1` and open http://localhost:4176. Alternatively use VS Code Live Server. No npm install, build step, token, or backend is needed. Internet access is required for searches and avatars.
