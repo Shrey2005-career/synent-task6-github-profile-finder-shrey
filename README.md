@@ -4,11 +4,8 @@ Synent internship Task 6: a lightweight public API integration built with HTML, 
 
 ## Video showcase
 
-YouTube demo: coming soon.
+[Watch the project demo on YouTube](https://youtu.be/rusT3f7doyI)
 
-<!-- After uploading, replace the line above with:
-[Watch the project demo on YouTube](PASTE_YOUR_YOUTUBE_VIDEO_URL_HERE)
--->
 
 ## Run locally
 
