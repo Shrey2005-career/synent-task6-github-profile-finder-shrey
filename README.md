@@ -6,6 +6,22 @@ Synent internship Task 6: a lightweight public API integration built with HTML, 
 
 [Watch the project demo on YouTube](https://youtu.be/KKH7yfV2eOQ)
 
+[Read the concise project report](REPORT.md)
+
+## Screenshots
+
+### Desktop search
+
+![GitHub Profile Finder search interface on desktop](<screenshots/Screenshot (123).png>)
+
+### Loaded profile
+
+![GitHub Profile Finder displaying Evan You's public GitHub profile](<screenshots/Screenshot (124).png>)
+
+### Mobile layout
+
+![GitHub Profile Finder responsive search interface on mobile](<screenshots/Screenshot (121).png>)
+
 ## Features
 
 - Search by username using the button or Enter.
