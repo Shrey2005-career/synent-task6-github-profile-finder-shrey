@@ -4,7 +4,7 @@ Synent internship Task 6: a lightweight public API integration built with HTML, 
 
 ## Video showcase
 
-[Watch the project demo on YouTube](https://youtu.be/rusT3f7doyI)
+[Watch the project demo on YouTube](https://youtu.be/KKH7yfV2eOQ)
 
 ## Features
 
