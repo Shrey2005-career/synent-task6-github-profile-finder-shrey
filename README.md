@@ -40,30 +40,6 @@ Unauthenticated requests normally allow 60 requests per hour per originating IP 
 
 References: [GitHub user endpoint](https://docs.github.com/en/rest/users/users#get-a-user) and [rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api).
 
-## Verify
-
-With Node.js installed (testing only):
-
-```text
-node --check script.js
-node --test tests/app.test.cjs
-```
-
-The dependency-free tests use a small DOM stub and mocked fetch responses. They test validation, text rendering, loading, duplicate prevention, HTTP/network errors, retry, and timeout without consuming GitHub quota. They are not a replacement for browser testing.
-
-Browser checklist:
-
-Verified in the browser: live `octocat` and `Shrey2005-career` lookups, loading state, invalid-input rejection, missing-profile error, and successful recovery. Rate-limit, timeout, and offline paths are covered by mocked tests rather than deliberately exhausting the live API quota.
-
-1. Search `octocat` with Enter and another username with the button.
-2. Confirm avatar, counts, bio fallback, and GitHub link.
-3. Try whitespace or a profile URL; confirm validation.
-4. Search a nonexistent username; confirm old results disappear and an error appears.
-5. Search a valid username again to confirm recovery.
-6. Optionally use DevTools offline/throttling to inspect network errors/loading; restore normal networking afterward.
-7. Check 320, 375, 390, 768, and 1440px widths for horizontal overflow, wrapping, and readable controls. These widths were checked with browser viewport emulation, not physical devices.
-8. Enable your OS/browser reduced-motion preference: the background and profile entrance should remain static. Motion rules are opt-in under `prefers-reduced-motion: no-preference`.
-
 ## Implementation slices
 
 1. Accessible HTML structure.
