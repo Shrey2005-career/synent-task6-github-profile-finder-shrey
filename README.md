@@ -6,11 +6,6 @@ Synent internship Task 6: a lightweight public API integration built with HTML, 
 
 [Watch the project demo on YouTube](https://youtu.be/rusT3f7doyI)
 
-
-## Run locally
-
-From this folder, run `python -m http.server 4176 --bind 127.0.0.1` and open http://localhost:4176. Alternatively use VS Code Live Server. No npm install, build step, token, or backend is needed. Internet access is required for searches and avatars.
-
 ## Features
 
 - Search by username using the button or Enter.
